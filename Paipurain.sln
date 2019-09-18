@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{636A499C-914C-470B-A04F-E2773F293B2B}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain", "src\Paipurain\Paipurain.csproj", "{55E4566C-09F6-4971-B812-98078719542E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Domain", "src\Paipurain.Domain\Paipurain.Domain.csproj", "{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D350610D-3AEF-4795-A502-E27AF946112E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Samples.ConsoleApp", "samples\Paipurain.Samples.ConsoleApp\Paipurain.Samples.ConsoleApp.csproj", "{64408D03-8FDD-414B-8DE6-F2300D509DBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Application", "src\Paipurain.Application\Paipurain.Application.csproj", "{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55E4566C-09F6-4971-B812-98078719542E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E4566C-09F6-4971-B812-98078719542E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E4566C-09F6-4971-B812-98078719542E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E4566C-09F6-4971-B812-98078719542E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64408D03-8FDD-414B-8DE6-F2300D509DBF} = {D350610D-3AEF-4795-A502-E27AF946112E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFC74912-C0F8-4C4E-94A2-DCC16836E98D}
+	EndGlobalSection
+EndGlobal
