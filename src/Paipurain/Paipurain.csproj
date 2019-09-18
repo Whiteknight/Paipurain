@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Paipurain.Application\Paipurain.Application.csproj" />
+    <ProjectReference Include="..\Paipurain.Domain\Paipurain.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
