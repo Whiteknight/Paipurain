@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain", "src\Paipurain\Paipurain.csproj", "{55E4566C-09F6-4971-B812-98078719542E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Domain", "src\Paipurain.Domain\Paipurain.Domain.csproj", "{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paipurain", "src\Paipurain\Paipurain.csproj", "{55E4566C-09F6-4971-B812-98078719542E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D350610D-3AEF-4795-A502-E27AF946112E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Samples.ConsoleApp", "samples\Paipurain.Samples.ConsoleApp\Paipurain.Samples.ConsoleApp.csproj", "{64408D03-8FDD-414B-8DE6-F2300D509DBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paipurain.Samples.ConsoleApp", "samples\Paipurain.Samples.ConsoleApp\Paipurain.Samples.ConsoleApp.csproj", "{64408D03-8FDD-414B-8DE6-F2300D509DBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Application", "src\Paipurain.Application\Paipurain.Application.csproj", "{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paipurain.Application", "src\Paipurain.Application\Paipurain.Application.csproj", "{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paipurain.Domain", "src\Paipurain.Domain\Paipurain.Domain.csproj", "{FC10106C-E84A-4F86-982B-8526DF7EFBA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{55E4566C-09F6-4971-B812-98078719542E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55E4566C-09F6-4971-B812-98078719542E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55E4566C-09F6-4971-B812-98078719542E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97B71B61-CBA3-41DF-9A6E-D359CFDB97F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64408D03-8FDD-414B-8DE6-F2300D509DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +37,10 @@ Global
 		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4939688C-C993-44E6-BD2A-2DFE14FDDC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC10106C-E84A-4F86-982B-8526DF7EFBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC10106C-E84A-4F86-982B-8526DF7EFBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC10106C-E84A-4F86-982B-8526DF7EFBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC10106C-E84A-4F86-982B-8526DF7EFBA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
