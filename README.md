@@ -22,6 +22,9 @@
 __Contributions are always welcome!__  
 Just send me a pull request and I will look at it. If you have more changes please create a issue to discuss it first.
 
+## Donate
+If you like my software, please consider [supporting me](https://paypal.me/alphadaniel) with a little donation. Thank you for your support! You are great!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
