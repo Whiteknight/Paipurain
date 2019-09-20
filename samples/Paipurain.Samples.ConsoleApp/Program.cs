@@ -9,12 +9,13 @@ namespace Paipurain.Samples.ConsoleApp
         static void Main(string[] args)
         {
             var pipeline = new Pipeline<string, Task>();
+
             pipeline.AddUnit(new Unit<string, bool>((t) =>
             {
                 return false;
             }));
 
-            pipeline.AddUnit(new Unit<string, bool>((t) =>
+            pipeline.AddUnit(new Unit<bool, bool>((t) =>
             {
                 return false;
             }));

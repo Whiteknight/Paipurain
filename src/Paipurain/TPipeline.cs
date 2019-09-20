@@ -1,5 +1,6 @@
 ﻿using Paipurain.Domain;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks.Dataflow;
@@ -29,8 +30,12 @@ namespace Paipurain
 
             if (_blocks.Any())
             {
-                var sourceBlock = _blocks.LastOrDefault() as ISourceBlock<TransformWrapper<TUnitOutput, TOutput>>;
-                //sourceBlock.LinkTo(block, new DataflowLinkOptions());
+                var sourceBlock = _blocks.LastOrDefault() as ISourceBlock<TransformWrapper<TUnitInput, TOutput>>;
+
+                if (sourceBlock == null)
+                    throw new InvalidOperationException();
+
+                sourceBlock.LinkTo(block, new DataflowLinkOptions());
             }
 
             _blocks.Add(block);
