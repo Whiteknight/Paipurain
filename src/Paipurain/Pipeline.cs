@@ -8,10 +8,10 @@ namespace Paipurain
 {
     internal class Pipeline<TInput, TOutput> : IPipeline<TInput, TOutput>
     {
-        private readonly ITargetBlock<TransformWrapper<TInput, TOutput>> _headUnit;
+        private readonly ITargetBlock<TransformWrapper<TOutput>> _headUnit;
         private readonly TaskCompletionSource<TOutput> _completion;
 
-        internal Pipeline(ITargetBlock<TransformWrapper<TInput, TOutput>> headUnit)
+        internal Pipeline(ITargetBlock<TransformWrapper<TOutput>> headUnit)
         {
             _headUnit = headUnit ?? throw new ArgumentNullException();
             _completion = new TaskCompletionSource<TOutput>();
@@ -19,7 +19,7 @@ namespace Paipurain
 
         public Task<TOutput> Process(TInput input)
         {
-            _headUnit.SendAsync(new TransformWrapper<TInput, TOutput>(input, _completion));
+            _headUnit.SendAsync(new TransformWrapper<TOutput>(input, _completion));
 
             return _completion.Task;
         }

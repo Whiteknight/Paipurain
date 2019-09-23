@@ -2,13 +2,13 @@
 
 namespace Paipurain
 {
-    internal class TransformWrapper<TInput, TOutput>
+    internal class TransformWrapper<TOutput>
     {
-        public TInput Value { get; }
+        public dynamic Value { get; }
         public TaskCompletionSource<TOutput> Completion { get; set;  }
 
         internal TransformWrapper(
-            TInput value,
+            dynamic value,
             TaskCompletionSource<TOutput> taskCompletionSource)
         {
             Value = value;
