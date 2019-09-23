@@ -5,25 +5,14 @@ namespace Paipurain.Samples.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main()
         {
-            //var pipeline = new Pipeline<string, Task>();
-
-            //pipeline.AddUnit<string, bool>((t) =>
-            //{
-            //    return false;
-            //});
-
-            //pipeline.AddUnit<bool, bool>((t) =>
-            //{
-            //    return false;
-            //});
-
-            //pipeline.ProcessAsync("test").Wait();
-
             var bla = new PipelineBuilder<string, bool>()
-                .AddUnit<string, bool>((t) => false)
-                .AddUnit<bool, bool>(x => true);
+                .AddUnit<string, bool>(async (t) => await Task.FromResult(false))
+                .AddUnit<bool, bool>(x => true)
+                .Build();
+
+            var value = await bla.Process("bla");
 
             Console.WriteLine("Hello World!");
         }

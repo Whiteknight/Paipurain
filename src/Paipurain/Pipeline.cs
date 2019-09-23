@@ -1,49 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Paipurain.Application;
+
+using System;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
 namespace Paipurain
 {
-    public class Pipeline<TInput, TOutput>
+    internal class Pipeline<TInput, TOutput> : IPipeline<TInput, TOutput>
     {
-        internal readonly List<IDataflowBlock> _blocks = new List<IDataflowBlock>();
+        private readonly ITargetBlock<TransformWrapper<TInput, TOutput>> _headUnit;
+        private readonly TaskCompletionSource<TOutput> _completion;
 
-        //public Task ProcessAsync(TInput input)
-        //{
-        //    var firstStep = _blocks[0] as ITargetBlock<TransformWrapper<TInput, TOutput>>;
-        //    var tcs = new TaskCompletionSource<TOutput>();
-        //    firstStep.SendAsync(new TransformWrapper<TInput, TOutput>(input, tcs));
-        //    return tcs.Task;
-        //}
+        internal Pipeline(ITargetBlock<TransformWrapper<TInput, TOutput>> headUnit)
+        {
+            _headUnit = headUnit ?? throw new ArgumentNullException();
+            _completion = new TaskCompletionSource<TOutput>();
+        }
 
-        //public void AddUnit<TTransformFuncInput, TTransformFuncOutput>(Func<TTransformFuncInput, TTransformFuncOutput> transformFunc)
-        //{
-        //    if (transformFunc == null)
-        //        return;
+        public Task<TOutput> Process(TInput input)
+        {
+            _headUnit.SendAsync(new TransformWrapper<TInput, TOutput>(input, _completion));
 
-        //    var block = new TransformBlock<TransformWrapper<TTransformFuncInput, TOutput>, TransformWrapper<TTransformFuncOutput, TOutput>>((unit) =>
-        //        new TransformWrapper<TTransformFuncOutput, TOutput>(transformFunc(unit.Value), unit.Completion));
-
-        //    LinkToLastBlock(block);
-        //}
-
-        //private void LinkToLastBlock<TFuncInput, TFuncOutput>(
-        //    TransformBlock<TransformWrapper<TFuncInput, TOutput>, TransformWrapper<TFuncOutput, TOutput>> block)
-        //{
-        //    if (block == null)
-        //        return;
-
-        //    if (_blocks.Any())
-        //    {
-        //        if (!(_blocks.LastOrDefault() is ISourceBlock<TransformWrapper<TFuncInput, TOutput>> sourceBlock))
-        //            throw new InvalidOperationException();
-
-        //        sourceBlock.LinkTo(block, new DataflowLinkOptions());
-        //    }
-
-        //    _blocks.Add(block);
-        //}
+            return _completion.Task;
+        }
     }
 }
