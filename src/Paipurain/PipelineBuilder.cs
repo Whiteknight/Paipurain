@@ -6,12 +6,12 @@ using System.Threading.Tasks.Dataflow;
 
 namespace Paipurain
 {
-    public class PipelineBuilder<TOutput>
+    public class PipelineBuilder<TInput, TOutput>
     {
         private IDataflowBlock _initialUnit;
         private IDataflowBlock _lastUnit;
 
-        public PipelineBuilder<TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
+        public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
             Func<TTransformFunctionInput, TTransformFunctionOutput> transformFunction)
         {
             if (transformFunction == null)
@@ -25,7 +25,7 @@ namespace Paipurain
             return this;
         }
 
-        public PipelineBuilder<TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
+        public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
             Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> asyncTransformFunction)
         {
             if (asyncTransformFunction == null)
@@ -39,7 +39,7 @@ namespace Paipurain
             return this;
         }
 
-        public IPipeline<TOutput> Build()
+        public IPipeline<TInput, TOutput> Build()
         {
             var initialUnit = _initialUnit as ITargetBlock<TransformWrapper<TOutput>>;
 
@@ -51,7 +51,7 @@ namespace Paipurain
 
             tailSourceUnit.LinkTo(resultUnit);
 
-            return new Pipeline<TOutput>(initialUnit);
+            return new Pipeline<TInput, TOutput>(initialUnit);
         }
 
         private void LinkToPredecessorBlock(IDataflowBlock block)
