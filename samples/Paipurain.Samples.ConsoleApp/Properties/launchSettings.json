@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Paipurain.Samples.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "sampleFile.txt"
+    }
+  }
+}
