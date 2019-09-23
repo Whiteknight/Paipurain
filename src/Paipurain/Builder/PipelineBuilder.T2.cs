@@ -7,26 +7,26 @@ namespace Paipurain.Builder
 {
     public partial class PipelineBuilder<TInput, TOutput>
     {
-        private IDataflowBlock _beginUnit;
-        private IDataflowBlock _lastUnit;
+        private IDataflowBlock _initialBlock;
+        private IDataflowBlock _lastBlock;
 
         private IPipeline<TInput, TOutput> CreatePipeline()
         {
-            var initialUnit = _beginUnit as ITargetBlock<TransformWrapper<TOutput>>;
+            var initialBlock = _initialBlock as ITargetBlock<TransformWrapper<TOutput>>;
             CreateResultBlock();
 
-            return new Pipeline<TInput, TOutput>(initialUnit);
+            return new Pipeline<TInput, TOutput>(initialBlock);
         }
 
         private void CreateResultBlock()
         {
-            var resultUnit = new ActionBlock<TransformWrapper<TOutput>>((tc) =>
+            var resultActionBlock = new ActionBlock<TransformWrapper<TOutput>>((tc) =>
                 tc.Completion.SetResult((TOutput)tc.Value));
 
-            if (!(_lastUnit is ISourceBlock<TransformWrapper<TOutput>> tailSourceUnit))
+            if (!(_lastBlock is ISourceBlock<TransformWrapper<TOutput>> lastBlockAsSource))
                 throw new InvalidOperationException();
 
-            tailSourceUnit.LinkTo(resultUnit);
+            lastBlockAsSource.LinkTo(resultActionBlock);
         }
 
         private void LinkToPredecessorBlock(IDataflowBlock block)
@@ -34,9 +34,9 @@ namespace Paipurain.Builder
             if (block == null)
                 return;
 
-            if (_lastUnit != null)
+            if (_lastBlock != null)
             {
-                if (!(_lastUnit is ISourceBlock<TransformWrapper<TOutput>> sourceBlock))
+                if (!(_lastBlock is ISourceBlock<TransformWrapper<TOutput>> sourceBlock))
                     return;
 
                 var targetBlock = block as ITargetBlock<TransformWrapper<TOutput>>;
@@ -44,7 +44,7 @@ namespace Paipurain.Builder
                 sourceBlock.LinkTo(targetBlock);
             }
 
-            _lastUnit = block;
+            _lastBlock = block;
         }
     }
 }

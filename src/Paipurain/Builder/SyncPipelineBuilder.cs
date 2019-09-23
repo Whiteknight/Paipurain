@@ -13,11 +13,11 @@ namespace Paipurain.Builder
             if (transformFunction == null)
                 throw new ArgumentNullException();
 
-            if (_beginUnit != null)
+            if (_initialBlock != null)
                 throw new InvalidOperationException();
 
-            _beginUnit = CreateSynchronousBlock(transformFunction);
-            LinkToPredecessorBlock(_beginUnit);
+            _initialBlock = CreateSynchronousBlock(transformFunction);
+            LinkToPredecessorBlock(_initialBlock);
 
             return this;
         }
@@ -28,18 +28,18 @@ namespace Paipurain.Builder
             if (transformFunction == null)
                 throw new ArgumentNullException();
 
-            AddUnit(transformFunction);
+            AddBlock(transformFunction);
 
             return CreatePipeline();
         }
 
-        public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
+        public PipelineBuilder<TInput, TOutput> AddBlock<TTransformFunctionInput, TTransformFunctionOutput>(
             Func<TTransformFunctionInput, TTransformFunctionOutput> transformFunction)
         {
             if (transformFunction == null)
                 throw new ArgumentNullException();
 
-            if (_beginUnit == null)
+            if (_initialBlock == null)
                 throw new InvalidOperationException();
 
             LinkToPredecessorBlock(

@@ -14,11 +14,11 @@ namespace Paipurain.Builder
             if (asyncTransformFunction == null)
                 throw new ArgumentNullException();
 
-            if (_beginUnit != null)
+            if (_initialBlock != null)
                 throw new InvalidOperationException();
 
-            _beginUnit = CreateAsynchronousBlock(asyncTransformFunction);
-            LinkToPredecessorBlock(_beginUnit);
+            _initialBlock = CreateAsynchronousBlock(asyncTransformFunction);
+            LinkToPredecessorBlock(_initialBlock);
 
             return this;
         }
@@ -29,18 +29,18 @@ namespace Paipurain.Builder
             if (asyncTransformFunction == null)
                 throw new ArgumentNullException();
 
-            AddUnit(asyncTransformFunction);
+            AddBlock(asyncTransformFunction);
 
             return CreatePipeline();
         }
 
-        public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
+        public PipelineBuilder<TInput, TOutput> AddBlock<TTransformFunctionInput, TTransformFunctionOutput>(
             Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> asyncTransformFunction)
         {
             if (asyncTransformFunction == null)
                 throw new ArgumentNullException();
 
-            if (_beginUnit == null)
+            if (_initialBlock == null)
                 throw new InvalidOperationException();
 
             LinkToPredecessorBlock(
@@ -50,8 +50,7 @@ namespace Paipurain.Builder
         }
 
         private IDataflowBlock CreateAsynchronousBlock<TTransformFunctionInput, TTransformFunctionOutput>(
-            Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> func,
-            bool asInitialUnit = false)
+            Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> func)
         {
             return new TransformBlock<TransformWrapper<TOutput>, TransformWrapper<TOutput>>(
                 async (unit) => new TransformWrapper<TOutput>(await func(unit.Value), unit.Completion));

@@ -1,4 +1,5 @@
 ﻿using Paipurain.Builder;
+
 using System;
 using System.Threading.Tasks;
 
@@ -10,8 +11,8 @@ namespace Paipurain.Samples.ConsoleApp
         {
             var pipeline = new PipelineBuilder<bool>()
                 .Begin((b) => true)
-                .AddUnit<bool, string>(x => "")
-                .AddUnit<string, string>(async (t) => await Task.FromResult("hallo!"))
+                .AddBlock<bool, string>(x => "")
+                .AddBlock<string, string>(async (t) => await Task.FromResult("hallo!"))
                 .Build<string>((t) => true);
 
             var value = await pipeline.Process(true);
