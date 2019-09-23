@@ -8,13 +8,13 @@ namespace Paipurain.Samples.ConsoleApp
     {
         static async Task Main()
         {
-            var bla = new PipelineBuilder<bool, string>()
+            var pipeline = new PipelineBuilder<bool, string>()
                 .Begin((b) => true)
                 .AddUnit<bool, string>(x => "")
                 .AddUnit<string, string>(async (t) => await Task.FromResult("hallo!"))
                 .Build<string>((t) => "test");
 
-            var value = await bla.Process(true);
+            var value = await pipeline.Process(true);
 
             Console.WriteLine(value);
             Console.ReadLine();
