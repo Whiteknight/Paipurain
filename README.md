@@ -55,8 +55,6 @@ var builder = new PipelineBuilder<string, bool>()
 
 // Create the pipeline
 var pipeline = builder.Build(); // throws InvalidOperationException
-
-...
 ```
 
 #### First block not matching input type
@@ -67,8 +65,6 @@ var builder = new PipelineBuilder<string, bool>()
 
 // Create the pipeline
 var pipeline = builder.Build(); // throws InvalidOperationException
-
-...
 ```
 
 #### Last block not matching output type
@@ -79,8 +75,6 @@ var builder = new PipelineBuilder<string, bool>()
 
 // Create the pipeline
 var pipeline = builder.Build(); // throws InvalidOperationException
-
-...
 ```
 
 ## Contributing
