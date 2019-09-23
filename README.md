@@ -8,6 +8,7 @@
 [![Nuget](https://img.shields.io/nuget/v/Paipurain.svg?style=flat-square)](https://www.nuget.org/packages/Paipurain/)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/alphadaniel)
 
+Simple and easy to use .NET Standard pipeline pattern implementation.
 
 <sub>Built with ❤︎ by Daniel Belz</sub>
 </div><br>

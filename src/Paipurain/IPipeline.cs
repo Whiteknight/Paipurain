@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Paipurain.Application
+namespace Paipurain
 {
     public interface IPipeline<TInput, TOutput>
     {
