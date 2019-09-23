@@ -15,6 +15,32 @@ Simple and easy to use .NET Standard pipeline pattern implementation.
 
 ## Getting started
 
+### Creating a simple pipeline
+To create a pipeline you need to use the `PipelineBuilder` class:
+```csharp
+
+// Input and Output of the pipeline is string in this case
+var builder = new PipelineBuilder<string>()
+	.Begin((val) => $"{val}_initialBlock")
+```
+
+### Common mistakes
+
+#### Don't using the Begin method
+The `Begin()` method must be always used to start building the pipeline:
+```csharp
+
+// WRONG
+var builder = new PipelineBuilder<string>()
+	.AddBlock<string, string>(val => $"{val}_block1")
+	.....
+
+// RIGHT
+var builder = new PipelineBuilder<string>()
+	.Begin((val) => $"{val}_initialBlock")
+	.AddBlock<string, string>(val => $"{val}_block1")
+	...
+```
 
 ## Contributing
 
