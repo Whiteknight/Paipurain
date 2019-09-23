@@ -15,40 +15,72 @@ Simple and easy to use .NET Standard pipeline pattern implementation.
 
 ## Getting started
 
-### Creating a simple pipeline
-To create a pipeline you need to use the `PipelineBuilder` class:
+### Creating a pipeline with same input and output type
 ```csharp
+// Build it
+var builder = new PipelineBuilder<bool>()
+	.AddBlock<bool, string>((val) => $"Input value was: {val}")
+	.AddBlock<string, bool>((val) => string.IsNullOrWhiteSpace(val));
 
-// Input and Output of the pipeline is string in this case
-var builder = new PipelineBuilder<string>()
-	.Begin((val) => $"{val}_block1")
-	.AddBlock<string, bool>((val) => string.IsNullOrWhiteSpac(val))
-	.AddBlock<bool, string>((val) => 
-	{
-		if (val)
-			return "String is null!";
+// Create the pipeline
+var pipeline = builder.Build();
 
-		return "String is not null!";
-	})
-	.Build<string>((val) => val);
+// PROCESS IT
+pipeline.Process(false);	
+```
+
+### Creating a pipeline with different input and output type
+```csharp
+// Build it
+var builder = new PipelineBuilder<string, bool>()
+	.AddBlock<string, bool>((val) => string.IsNotNullOrWhitespace(val));
+
+// Create the pipeline
+var pipeline = builder.Build();
+
+// PROCESS IT
+pipeline.Process("Not empty string"); // returns true
+pipeline.Process(" "); // returns false
+pipeline.Process(""); // returns false	
 ```
 
 ### Common mistakes
 
-#### Don't using the Begin method
-The `Begin()` method must be always used to start building the pipeline:
+#### Blocks not matching input type
 ```csharp
+// Build it
+var builder = new PipelineBuilder<string, bool>()
+	.AddBlock<string, bool>(...)
+	.AddBlock<string, bool>(...); // <--- WRONG (input must be bool because of previous block)
 
-// WRONG
-var builder = new PipelineBuilder<string>()
-	.AddBlock<string, string>(val => $"{val}_block1")
-	.....
+// Create the pipeline
+var pipeline = builder.Build(); // throws InvalidOperationException
 
-// RIGHT
-var builder = new PipelineBuilder<string>()
-	.Begin((val) => $"{val}_block1")
-	.AddBlock<string, string>(val => $"{val}_block2")
-	...
+...
+```
+
+#### First block not matching input type
+```csharp
+// Build it
+var builder = new PipelineBuilder<string, bool>()
+	.AddBlock<bool, bool>(...);
+
+// Create the pipeline
+var pipeline = builder.Build(); // throws InvalidOperationException
+
+...
+```
+
+#### Last block not matching output type
+```csharp
+// Build it
+var builder = new PipelineBuilder<string, bool>()
+	.AddBlock<string, string>(...);
+
+// Create the pipeline
+var pipeline = builder.Build(); // throws InvalidOperationException
+
+...
 ```
 
 ## Contributing

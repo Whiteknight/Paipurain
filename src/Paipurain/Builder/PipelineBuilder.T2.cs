@@ -8,7 +8,7 @@ namespace Paipurain.Builder
         private IDataflowBlock _initialBlock;
         private IDataflowBlock _lastBlock;
 
-        private IPipeline<TInput, TOutput> CreatePipeline()
+        public IPipeline<TInput, TOutput> Build()
         {
             var initialBlock = _initialBlock as ITargetBlock<TransformWrapper<TOutput>>;
             CreateResultBlock();
@@ -30,7 +30,7 @@ namespace Paipurain.Builder
         private void LinkToPredecessorBlock(IDataflowBlock block)
         {
             if (block == null)
-                return;
+                return;            
 
             if (_lastBlock != null)
             {
@@ -40,6 +40,11 @@ namespace Paipurain.Builder
                 var targetBlock = block as ITargetBlock<TransformWrapper<TOutput>>;
 
                 sourceBlock.LinkTo(targetBlock);
+            }
+
+            if (_initialBlock == null)
+            {
+                _initialBlock = block;
             }
 
             _lastBlock = block;

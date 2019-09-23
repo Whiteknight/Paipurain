@@ -10,15 +10,19 @@ namespace Paipurain.Samples.ConsoleApp
         static async Task Main()
         {
             var pipeline = new PipelineBuilder<bool>()
-                .Begin((b) => true)
-                .AddBlock<bool, string>(x => "")
-                .AddBlock<string, string>(async (t) => await Task.FromResult("hallo!"))
-                .Build<string>((t) => true);
+                .AddBlock<bool, string>(BeginMethod)
+                .AddBlock<string, bool>(async (t) => await Task.FromResult(true))
+                .Build();
 
             var value = await pipeline.Process(true);
 
             Console.WriteLine(value);
             Console.ReadLine();
+        }
+
+        private static string BeginMethod(bool input)
+        {
+            return input ? ":)" : ":(";
         }
     }
 }
