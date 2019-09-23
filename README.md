@@ -21,7 +21,16 @@ To create a pipeline you need to use the `PipelineBuilder` class:
 
 // Input and Output of the pipeline is string in this case
 var builder = new PipelineBuilder<string>()
-	.Begin((val) => $"{val}_initialBlock")
+	.Begin((val) => $"{val}_block1")
+	.AddBlock<string, bool>((val) => string.IsNullOrWhiteSpac(val))
+	.AddBlock<bool, string>((val) => 
+	{
+		if (val)
+			return "String is null!";
+
+		return "String is not null!";
+	})
+	.Build<string>((val) => val);
 ```
 
 ### Common mistakes
@@ -37,8 +46,8 @@ var builder = new PipelineBuilder<string>()
 
 // RIGHT
 var builder = new PipelineBuilder<string>()
-	.Begin((val) => $"{val}_initialBlock")
-	.AddBlock<string, string>(val => $"{val}_block1")
+	.Begin((val) => $"{val}_block1")
+	.AddBlock<string, string>(val => $"{val}_block2")
 	...
 ```
 
