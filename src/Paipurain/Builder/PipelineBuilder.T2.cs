@@ -21,10 +21,10 @@ namespace Paipurain.Builder
             var resultActionBlock = new ActionBlock<TransformWrapper<TOutput>>((tc) =>
                 tc.Completion.SetResult((TOutput)tc.Value));
 
-            if (!(_lastBlock is ISourceBlock<TransformWrapper<TOutput>> lastBlockAsSource))
+            if (!(_lastBlock is ISourceBlock<TransformWrapper<TOutput>> lastAsSourceBlock))
                 throw new InvalidOperationException();
 
-            lastBlockAsSource.LinkTo(resultActionBlock);
+            lastAsSourceBlock.LinkTo(resultActionBlock);
         }
 
         private void LinkToPredecessorBlock(IDataflowBlock block)
