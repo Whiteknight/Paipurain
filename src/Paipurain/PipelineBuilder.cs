@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
 namespace Paipurain
@@ -11,6 +10,8 @@ namespace Paipurain
     public class PipelineBuilder<TInput, TOutput>
     {
         private readonly List<IDataflowBlock> _blocks = new List<IDataflowBlock>();
+
+        private ISourceBlock<TransformWrapper<dynamic, dynamic>> _lastBlock;
 
         public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
             Func<TTransformFunctionInput, TTransformFunctionOutput> transformFunction)
@@ -21,24 +22,26 @@ namespace Paipurain
             var block = new TransformBlock<TransformWrapper<TTransformFunctionInput, TOutput>, TransformWrapper<TTransformFunctionOutput, TOutput>>(
                 (unit) => new TransformWrapper<TTransformFunctionOutput, TOutput>(transformFunction(unit.Value), unit.Completion));
 
-            LinkToLastBlock(block);
-
-            return this;
-        }
-
-        public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
-            Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> asyncTransformFunction)
-        {
-            if (asyncTransformFunction == null)
-                throw new ArgumentNullException();
-
-            var block = new TransformBlock<TransformWrapper<TTransformFunctionInput, TOutput>, TransformWrapper<TTransformFunctionOutput, TOutput>>(
-                async (unit) => new TransformWrapper<TTransformFunctionOutput, TOutput>(await asyncTransformFunction(unit.Value), unit.Completion));
+            _lastBlock = block as ISourceBlock<TransformWrapper<dynamic, dynamic>>;
 
             LinkToLastBlock(block);
 
             return this;
         }
+
+        //public PipelineBuilder<TInput, TOutput> AddUnit<TTransformFunctionInput, TTransformFunctionOutput>(
+        //    Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> asyncTransformFunction)
+        //{
+        //    if (asyncTransformFunction == null)
+        //        throw new ArgumentNullException();
+
+        //    var block = new TransformBlock<TransformWrapper<TTransformFunctionInput, TOutput>, TransformWrapper<TTransformFunctionOutput, TOutput>>(
+        //        async (unit) => new TransformWrapper<TTransformFunctionOutput, TOutput>(await asyncTransformFunction(unit.Value), unit.Completion));
+
+        //    LinkToLastBlock(block);
+
+        //    return this;
+        //}
 
         public IPipeline<TInput, TOutput> Build()
         {

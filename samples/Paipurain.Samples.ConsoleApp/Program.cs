@@ -8,7 +8,7 @@ namespace Paipurain.Samples.ConsoleApp
         static async Task Main()
         {
             var bla = new PipelineBuilder<string, bool>()
-                .AddUnit<string, bool>(async (t) => await Task.FromResult(false))
+                //.AddUnit<string, bool>(async (t) => await Task.FromResult(false))
                 .AddUnit<bool, bool>(x => true)
                 .Build();
 
