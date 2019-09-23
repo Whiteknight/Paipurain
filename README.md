@@ -6,9 +6,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/LegendaryB/Paipurain.svg?longCache=true&style=flat-square)](https://github.com/LegendaryB/Paipurain/blob/master/LICENSE.md)
 [![Nuget](https://img.shields.io/nuget/v/Paipurain.svg?style=flat-square)](https://www.nuget.org/packages/Paipurain/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/LegendaryB/Paipurain.svg?longCache=true&style=flat-square)](https://github.com/LegendaryB/Paipurain)
-[![GitHub issues](https://img.shields.io/github/issues/LegendaryB/Paipurain.svg?longCache=true&style=flat-square)](https://github.com/LegendaryB/Paipurain/issues)
-
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/alphadaniel)
 
 
 <sub>Built with ❤︎ by Daniel Belz</sub>
