@@ -2,11 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Daniel Belz</Authors>
+    <Company>Daniel Belz</Company>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Copyright © Daniel Belz 2019</Copyright>
+    <Description>Simple and easy to use .NET Standard pipeline pattern implementation.</Description>
+    <PackageProjectUrl>https://github.com/LegendaryB/Paipurain</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LegendaryB/Paipurain</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageTags>simple clean neat easy to use library net standard framework csharp pipeline pattern legendaryb</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\NeatInput\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
