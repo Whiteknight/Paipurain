@@ -12,7 +12,7 @@ namespace Paipurain.Samples.ConsoleApp
                 .Begin((b) => true)
                 .AddUnit<bool, string>(x => "")
                 .AddUnit<string, string>(async (t) => await Task.FromResult("hallo!"))
-                .Build<string>(
+                .Build<string>((t) => "test");
 
             var value = await bla.Process(true);
 
