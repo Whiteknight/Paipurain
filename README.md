@@ -54,7 +54,7 @@ var builder = new PipelineBuilder<string, bool>()
 	.AddBlock<string, bool>(...); // <--- WRONG (input must be bool because of previous block)
 
 // Create the pipeline
-var pipeline = builder.Build(); // throws InvalidOperationException
+var pipeline = builder.Build(); // throws RuntimeBinderException
 ```
 
 #### First block not matching input type
@@ -64,7 +64,7 @@ var builder = new PipelineBuilder<string, bool>()
 	.AddBlock<bool, bool>(...);
 
 // Create the pipeline
-var pipeline = builder.Build(); // throws InvalidOperationException
+var pipeline = builder.Build(); // throws RuntimeBinderException
 ```
 
 #### Last block not matching output type
@@ -74,7 +74,7 @@ var builder = new PipelineBuilder<string, bool>()
 	.AddBlock<string, string>(...);
 
 // Create the pipeline
-var pipeline = builder.Build(); // throws InvalidOperationException
+var pipeline = builder.Build(); // throws RuntimeBinderException
 ```
 
 ## Contributing
