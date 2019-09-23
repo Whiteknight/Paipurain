@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paipurain.Builder;
+using System;
 using System.Threading.Tasks;
 
 namespace Paipurain.Samples.ConsoleApp
@@ -8,13 +9,15 @@ namespace Paipurain.Samples.ConsoleApp
         static async Task Main()
         {
             var bla = new PipelineBuilder<bool, string>()
-                .AddUnit<bool, bool>(x => true)
-                .AddUnit<bool, string>(async (t) => await Task.FromResult("hallo!"))
-                .Build();
+                .Begin((b) => true)
+                .AddUnit<bool, string>(x => "")
+                .AddUnit<string, string>(async (t) => await Task.FromResult("hallo!"))
+                .Build<string>(
 
             var value = await bla.Process(true);
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(value);
+            Console.ReadLine();
         }
     }
 }
