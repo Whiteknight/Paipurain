@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Daniel Belz</Authors>
     <Company>Daniel Belz</Company>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <Copyright>Copyright © Daniel Belz 2019</Copyright>
     <Description>Simple and easy to use .NET Standard pipeline pattern implementation.</Description>
     <PackageProjectUrl>https://github.com/LegendaryB/Paipurain</PackageProjectUrl>
@@ -13,6 +13,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageTags>simple clean neat easy to use library net standard framework csharp pipeline pattern legendaryb</PackageTags>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE">
+    <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
