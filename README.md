@@ -4,7 +4,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-grammas-recipe.svg)](https://forthebadge.com)
 
-[![GitHub license](https://img.shields.io/github/license/LegendaryB/Paipurain.svg?longCache=true&style=flat-square)](https://github.com/LegendaryB/Paipurain/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/LegendaryB/Paipurain.svg?longCache=true&style=flat-square)](https://github.com/LegendaryB/Paipurain/blob/master/LICENSE)
 [![Nuget](https://img.shields.io/nuget/v/Paipurain.svg?style=flat-square)](https://www.nuget.org/packages/Paipurain/)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/alphadaniel)
 
