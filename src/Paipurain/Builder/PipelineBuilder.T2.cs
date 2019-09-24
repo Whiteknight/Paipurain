@@ -34,12 +34,12 @@ namespace Paipurain.Builder
 
             if (_lastBlock != null)
             {
-                if (!(_lastBlock is ISourceBlock<TransformWrapper<TOutput>> sourceBlock))
+                if (!(_lastBlock is ISourceBlock<TransformWrapper<TOutput>> lastAsSourceBlock))
                     return;
 
                 var targetBlock = block as ITargetBlock<TransformWrapper<TOutput>>;
 
-                sourceBlock.LinkTo(targetBlock);
+                lastAsSourceBlock.LinkTo(targetBlock);
             }
 
             if (_initialBlock == null)
