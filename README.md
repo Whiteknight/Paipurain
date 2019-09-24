@@ -26,7 +26,7 @@ var builder = new PipelineBuilder<bool>()
 var pipeline = builder.Build();
 
 // PROCESS IT
-pipeline.Process(false);	
+await pipeline.Process(false);	
 ```
 
 ### Creating a pipeline with different input and output type
@@ -39,9 +39,9 @@ var builder = new PipelineBuilder<string, bool>()
 var pipeline = builder.Build();
 
 // PROCESS IT
-pipeline.Process("Not empty string"); // returns true
-pipeline.Process(" "); // returns false
-pipeline.Process(""); // returns false	
+await pipeline.Process("Not empty string"); // returns true
+await pipeline.Process(" "); // returns false
+await pipeline.Process(""); // returns false	
 ```
 
 ### Common mistakes
