@@ -15,21 +15,7 @@ Simple and easy to use .NET Standard pipeline pattern implementation.
 
 ## Getting started
 
-### Creating a pipeline with same input and output type
-```csharp
-// Build it
-var builder = new PipelineBuilder<bool>()
-	.AddBlock<bool, string>((val) => $"Input value was: {val}")
-	.AddBlock<string, bool>((val) => string.IsNullOrWhiteSpace(val));
-
-// Create the pipeline
-var pipeline = builder.Build();
-
-// PROCESS IT
-await pipeline.Process(false);	
-```
-
-### Creating a pipeline with different input and output type
+### Creating a pipeline
 ```csharp
 // Build it
 var builder = new PipelineBuilder<string, bool>()
