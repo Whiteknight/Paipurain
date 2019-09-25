@@ -11,9 +11,9 @@ namespace Paipurain.Samples.ConsoleApp
         static async Task Main(string[] args)
         {
             var pipeline = new PipelineBuilder<string[], string>()
-                .AddBlock<string[], string>(GetFilePath)
-                .AddBlock<string, string>(ReadFileContent)
-                .AddBlock<string, string>(AttachText)
+                .AddBlock(GetFilePath)
+                .AddBlock(ReadFileContent)
+                .AddBlock(AttachText)
                 .Build();
 
             var value = await pipeline.Process(args);

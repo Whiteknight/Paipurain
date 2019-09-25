@@ -3,7 +3,7 @@ using System.Threading.Tasks.Dataflow;
 
 namespace Paipurain.Builder
 {
-    public partial class PipelineBuilder<TInput, TOutput>
+    public partial class PipelineBuilder<TInput, TOutput> : IPipelineBuilder<TInput, TOutput, TInput>
     {
         private IDataflowBlock _initialBlock;
         private IDataflowBlock _lastBlock;

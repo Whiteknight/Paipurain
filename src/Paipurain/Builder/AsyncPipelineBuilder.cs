@@ -6,8 +6,8 @@ namespace Paipurain.Builder
 {
     public partial class PipelineBuilder<TInput, TOutput>
     {
-        public PipelineBuilder<TInput, TOutput> AddBlock<TTransformFunctionInput, TTransformFunctionOutput>(
-            Func<TTransformFunctionInput, Task<TTransformFunctionOutput>> asyncTransformFunction)
+        public IPipelineBuilder<TInput, TOutput, TTransformFunctionOutput> AddBlockAsync<TTransformFunctionOutput>(
+            Func<TInput, Task<TTransformFunctionOutput>> asyncTransformFunction)
         {
             if (asyncTransformFunction == null)
                 throw new ArgumentNullException();
@@ -15,7 +15,7 @@ namespace Paipurain.Builder
             LinkToPredecessorBlock(
                 CreateAsynchronousBlock(asyncTransformFunction));
 
-            return this;
+            return new IntermediatePipelineBuilder<TTransformFunctionOutput>(this);
         }
 
         private IDataflowBlock CreateAsynchronousBlock<TTransformFunctionInput, TTransformFunctionOutput>(
